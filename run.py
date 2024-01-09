@@ -154,7 +154,7 @@ class Feature:
                     self.downloaded_size = 0
                     with Progress() as self.progress:
                         self.task = self.progress.add_task("[bold cyan]Unduhan...", total=self.total_size)
-                        with open(f'/storage/emulated/0/Download/{filename}', 'wb') as w:
+                        with open(file_path, 'wb') as w:
                             for data in response2.iter_content(chunk_size=1024):
                                 w.write(data)
                                 self.downloaded_size += len(data)
