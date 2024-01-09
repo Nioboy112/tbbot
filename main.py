@@ -28,25 +28,25 @@ def collect_password(update: Update, context: CallbackContext) -> int:
         context.user_data['password'] = ''
     else:
         context.user_data['password'] = user_input
-    run_script(update)
+    run_script(update, context)
     return ConversationHandler.END
 
-# Execute the run.py script
-def run_script(update: Update) -> None:
+# Execute the run.py script and show outputs in console
+def run_script(update: Update, context: CallbackContext) -> None:
     link = context.user_data['link']
     password = context.user_data['password']
 
     # Run the script with provided inputs
     result = subprocess.run(['python3', 'run.py', link, password], capture_output=True, text=True)
 
-    # Send the output of the script execution to the user
-    update.message.reply_text(result.stdout)
+    # Display the output of the script execution in the console
+    print(result.stdout)
     if result.stderr:
-        update.message.reply_text(f"Error: {result.stderr}")
+        print(f"Error: {result.stderr}")
 
 def main() -> None:
     # Initialize the Telegram Bot
-    updater = Updater("6618564239:AAFocGP8FrjZCRQ3U4ur0vaV5IORfpQq-cA")
+    updater = Updater("YOUR_BOT_TOKEN_HERE")
 
     # Get the dispatcher to register handlers
     dispatcher = updater.dispatcher
