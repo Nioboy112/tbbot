@@ -46,7 +46,7 @@ def run_script(update: Update) -> None:
 
 def main() -> None:
     # Initialize the Telegram Bot
-    updater = Updater("YOUR_BOT_TOKEN")
+    updater = Updater("6618564239:AAFocGP8FrjZCRQ3U4ur0vaV5IORfpQq-cA")
 
     # Get the dispatcher to register handlers
     dispatcher = updater.dispatcher
